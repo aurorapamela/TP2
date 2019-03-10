@@ -30,29 +30,25 @@ var local = {
   ]
 };
 
-// console.log (local.ventas[0].componentes)
-// console.log (local.ventas[1].fecha[0])
-// console.log ((local.precios[0].precio)+(local.precios[1].precio)
-
-// function precioMaquina (array){
-//   var sumaDeValores = [];
-//     // console.log(sumaDeValores)
-//   for (var i=0; i<local.precios.length;i++){
-//   // console.log ("local.precio", local.precios[i].componente)
-//     for (var j=0; j<array.length;j++){
-//       // console.log ("parametro", array[j])
-//       if (array[j] === local.precios[i].componente){
-//         // console.log (local.precios[j].precio)
-//         sumaDeValores.push(local.precios[i].precio)
-//         // console.log(sumaDeValores)
-//       }
-//     }
-//   }
-//   // console.log (sumaDeValores)
-//   return sumaDeValores.reduce(function (total, valor){
-//     return total + valor
-//   })
-// }
+function precioMaquina (array){
+  var sumaDeValores = [];
+    // console.log(sumaDeValores)
+  for (var i=0; i<local.precios.length;i++){
+  // console.log ("local.precio", local.precios[i].componente)
+    for (var j=0; j<array.length;j++){
+      // console.log ("parametro", array[j])
+      if (array[j] === local.precios[i].componente){
+        // console.log (local.precios[j].precio)
+        sumaDeValores.push(local.precios[i].precio)
+        // console.log(sumaDeValores)
+      }
+    }
+  }
+  // console.log (sumaDeValores)
+  return sumaDeValores.reduce(function (total, valor){
+    return total + valor
+  })
+}
 
 function precioMaquina (array){
   var sumaDeValores = [];
@@ -85,6 +81,20 @@ console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1200"]))
 
 // cantidadVentasComponente(componente): recibe un componente y devuelve la cantidad de veces que fue vendido, o sea que formó parte de una máquina que se vendió. La lista de ventas no se pasa por parámetro, se asume que está identificada por la variable ventas.
 
+function cantidadVentasComponente (item){
+  var vecesVendido = 0;
+  for (var i=0;i<local.ventas.length;i++){
+    // console.log(local.ventas[i].componentes)
+    for (var j=0;j<local.ventas[i].componentes.length;j++){
+      // console.log(local.ventas[i].componentes[j])
+      if (item === local.ventas[i].componentes[j]){
+        vecesVendido++;
+      }
+    }
+  }
+  return vecesVendido
+}
 console.log( cantidadVentasComponente("Monitor ASC 543") ); // 2
-console.log( cantidadVentasComponente("Motherboard ASUS 1500") );
-console.log( cantidadVentasComponente("Monitor ASC 543") );
+console.log( cantidadVentasComponente("Motherboard ASUS 1500") ); //2
+console.log( cantidadVentasComponente("Monitor ASC 543") ); //2
+console.log( cantidadVentasComponente("Monitor GPRS 3000") ); //3
