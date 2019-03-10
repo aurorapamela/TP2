@@ -82,3 +82,9 @@ console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]))
 console.log(precioMaquina(["Monitor ASC 543", "Motherboard MZI"]))
 console.log(precioMaquina(["Monitor ASC 543", "Motherboard ASUS 1200"]))
 console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1200"]))
+
+// cantidadVentasComponente(componente): recibe un componente y devuelve la cantidad de veces que fue vendido, o sea que formó parte de una máquina que se vendió. La lista de ventas no se pasa por parámetro, se asume que está identificada por la variable ventas.
+
+console.log( cantidadVentasComponente("Monitor ASC 543") ); // 2
+console.log( cantidadVentasComponente("Motherboard ASUS 1500") );
+console.log( cantidadVentasComponente("Monitor ASC 543") );
