@@ -98,3 +98,7 @@ console.log( cantidadVentasComponente("Monitor ASC 543") ); // 2
 console.log( cantidadVentasComponente("Motherboard ASUS 1500") ); //2
 console.log( cantidadVentasComponente("Monitor ASC 543") ); //2
 console.log( cantidadVentasComponente("Monitor GPRS 3000") ); //3
+
+vendedoraDelMes(mes, anio), se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la vendedora que más vendió en plata en el mes. O sea no cantidad de ventas, sino importe total de las ventas. El importe de una venta es el que indica la función precioMaquina.
+
+console.log( vendedoraDelMes(1, 2019) ); // "Ada" (vendio por $670, una máquina de $320 y otra de $350)
