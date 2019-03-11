@@ -73,7 +73,7 @@ function precioMaquina (array){
 //
 // precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con esos componentes, que es la suma de los precios de cada componente incluido.
 
-console.log( precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]) ); // 320 ($200 del monitor + $120 del motherboard)
+console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]) ); // 320 ($200 del monitor + $120 del motherboard)
 console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]))
 console.log(precioMaquina(["Monitor ASC 543", "Motherboard MZI"]))
 console.log(precioMaquina(["Monitor ASC 543", "Motherboard ASUS 1200"]))
@@ -99,6 +99,25 @@ console.log( cantidadVentasComponente("Motherboard ASUS 1500") ); //2
 console.log( cantidadVentasComponente("Monitor ASC 543") ); //2
 console.log( cantidadVentasComponente("Monitor GPRS 3000") ); //3
 
-vendedoraDelMes(mes, anio), se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la vendedora que más vendió en plata en el mes. O sea no cantidad de ventas, sino importe total de las ventas. El importe de una venta es el que indica la función precioMaquina.
+// vendedoraDelMes(mes, anio), se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la vendedora que más vendió en plata en el mes. O sea no cantidad de ventas, sino importe total de las ventas. El importe de una venta es el que indica la función precioMaquina.
 
-console.log( vendedoraDelMes(1, 2019) ); // "Ada" (vendio por $670, una máquina de $320 y otra de $350)
+// console.log( vendedoraDelMes(1, 2019) ); // "Ada" (vendio por $670, una máquina de $320 y otra de $350)
+
+
+var totalVentasGrace=0
+var totalVentasAda=0
+for (i=0; i<local.ventas.length;i++){
+  if (local.ventas[i].nombreVendedora==='Grace'){
+    totalVentasGrace+= precioMaquina(local.ventas[i].componentes)
+  } else if (local.ventas[i].nombreVendedora==='Ada'){
+    totalVentasAda+= precioMaquina(local.ventas[i].componentes)
+  }
+}
+console.log('Grace' , totalVentasGrace)
+console.log('Ada' , totalVentasAda)
+
+if (totalVentasGrace>totalVentasAda){
+  console.log('Grace vendió más')
+} else {
+  console.log('Ada vendió más')
+}
