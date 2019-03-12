@@ -112,8 +112,7 @@ for (i=0; i<local.vendedoras.length;i++){
   // console.log(local.vendedoras[i])
   for (j=0;j<local.ventas.length;j++){
     if (local.ventas[j].nombreVendedora===local.vendedoras[i]){
-      // precioMaquina(local.ventas[i].componentes)
-      
+      console.log('hola',local.vendedoras[i])
     }
   }
 }
