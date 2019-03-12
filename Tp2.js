@@ -102,22 +102,37 @@ console.log( cantidadVentasComponente("Monitor GPRS 3000") ); //3
 // vendedoraDelMes(mes, anio), se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la vendedora que más vendió en plata en el mes. O sea no cantidad de ventas, sino importe total de las ventas. El importe de una venta es el que indica la función precioMaquina.
 
 // console.log( vendedoraDelMes(1, 2019) ); // "Ada" (vendio por $670, una máquina de $320 y otra de $350)
-
-
-var totalVentasGrace=0
-var totalVentasAda=0
-for (i=0; i<local.ventas.length;i++){
-  if (local.ventas[i].nombreVendedora==='Grace'){
-    totalVentasGrace+= precioMaquina(local.ventas[i].componentes)
-  } else if (local.ventas[i].nombreVendedora==='Ada'){
-    totalVentasAda+= precioMaquina(local.ventas[i].componentes)
+var ventasVendedoras={
+Ada:0,
+Grace:0,
+Hedy:0,
+Sheryl:0,
+}
+for (i=0; i<local.vendedoras.length;i++){
+  // console.log(local.vendedoras[i])
+  for (j=0;j<local.ventas.length;j++){
+    if (local.ventas[j].nombreVendedora===local.vendedoras[i]){
+      // precioMaquina(local.ventas[i].componentes)
+      
+    }
   }
 }
-console.log('Grace' , totalVentasGrace)
-console.log('Ada' , totalVentasAda)
+console.log(ventasVendedoras)
 
-if (totalVentasGrace>totalVentasAda){
-  console.log('Grace vendió más')
-} else {
-  console.log('Ada vendió más')
-}
+// var totalVentasGrace=0
+// var totalVentasAda=0
+// for (i=0; i<local.ventas.length;i++){
+//   if (local.ventas[i].nombreVendedora==='Grace'){
+//     totalVentasGrace+= precioMaquina(local.ventas[i].componentes)
+//   } else if (local.ventas[i].nombreVendedora==='Ada'){
+//     totalVentasAda+= precioMaquina(local.ventas[i].componentes)
+//   }
+// }
+// console.log('Grace' , totalVentasGrace)
+// console.log('Ada' , totalVentasAda)
+//
+// if (totalVentasGrace>totalVentasAda){
+//   console.log('Grace vendió más')
+// } else {
+//   console.log('Ada vendió más')
+// }
