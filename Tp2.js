@@ -102,21 +102,22 @@ console.log( cantidadVentasComponente("Monitor GPRS 3000") ); //3
 // vendedoraDelMes(mes, anio), se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la vendedora que más vendió en plata en el mes. O sea no cantidad de ventas, sino importe total de las ventas. El importe de una venta es el que indica la función precioMaquina.
 
 // console.log( vendedoraDelMes(1, 2019) ); // "Ada" (vendio por $670, una máquina de $320 y otra de $350)
-var ventasVendedoras={
-Ada:0,
-Grace:0,
-Hedy:0,
-Sheryl:0,
-}
-for (i=0; i<local.vendedoras.length;i++){
-  // console.log(local.vendedoras[i])
-  for (j=0;j<local.ventas.length;j++){
-    if (local.ventas[j].nombreVendedora===local.vendedoras[i]){
-      console.log('hola',local.vendedoras[i])
-    }
-  }
-}
-console.log(ventasVendedoras)
+// var ventasVendedoras={
+// Ada:0,
+// Grace:0,
+// Hedy:0,
+// Sheryl:0,
+// }
+// for (i=0; i<local.vendedoras.length;i++){
+//   // console.log(local.vendedoras[i])
+//   for (j=0;j<local.ventas.length;j++){
+//     if (local.ventas[j].nombreVendedora===local.vendedoras[i]){
+//       console.log('hola',local.vendedoras[i],local.ventas[i].componentes)
+//
+//     }
+//   }
+// }
+// console.log(ventasVendedoras)
 
 // var totalVentasGrace=0
 // var totalVentasAda=0
@@ -135,3 +136,25 @@ console.log(ventasVendedoras)
 // } else {
 //   console.log('Ada vendió más')
 // }
+var adaVentas=[];
+var graceVentas=[];
+function vendedoraDelMes(anio,mes){
+  for (var i=0; i<local.ventas.length;i++){
+    var anioVentas=local.ventas[i].fecha.getFullYear()
+    var mesVentas=local.ventas[i].fecha.getMonth()+1
+    if (anio==anioVentas && mes==mesVentas){
+      if(local.ventas[i].nombreVendedora==='Ada'){
+      adaVentas.push(precioMaquina(local.ventas[i].componentes))
+    } else if (local.ventas[i].nombreVendedora==='Grace'){
+      graceVentas.push(precioMaquina(local.ventas[i].componentes))
+    }
+  }
+}
+var ventasAda = adaVentas.reduce (function(total,valor){
+  console.log(total + valor)
+})
+var ventasGrace = graceVentas.reduce (function(total,valor){
+  console.log(total + valor)
+})
+}
+vendedoraDelMes(2019,1)
