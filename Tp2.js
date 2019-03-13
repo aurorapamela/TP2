@@ -151,10 +151,16 @@ function vendedoraDelMes(anio,mes){
   }
 }
 var ventasAda = adaVentas.reduce (function(total,valor){
-  console.log(total + valor)
+  return total + valor
 })
 var ventasGrace = graceVentas.reduce (function(total,valor){
-  console.log(total + valor)
+  return total + valor
 })
+if(ventasAda>ventasGrace){
+  return 'Ada'
+} else {
+  return 'Grace'
 }
-vendedoraDelMes(2019,1)
+}
+
+console.log(vendedoraDelMes(2019,1))
