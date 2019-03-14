@@ -136,9 +136,10 @@ console.log( cantidadVentasComponente("Monitor GPRS 3000") ); //3
 // } else {
 //   console.log('Ada vendió más')
 // }
-var adaVentas=[];
-var graceVentas=[];
+
 function vendedoraDelMes(anio,mes){
+  var adaVentas=[];
+  var graceVentas=[];
   for (var i=0; i<local.ventas.length;i++){
     var anioVentas=local.ventas[i].fecha.getFullYear()
     var mesVentas=local.ventas[i].fecha.getMonth()+1
@@ -162,5 +163,26 @@ if(ventasAda>ventasGrace){
   return 'Grace'
 }
 }
-
 console.log(vendedoraDelMes(2019,1))
+
+function ventasMes(mes,anio){
+  var ventasPorMes=[];
+  for (var i=0; i<local.ventas.length;i++){
+    var anioVentas=local.ventas[i].fecha.getFullYear()
+    var mesVentas=local.ventas[i].fecha.getMonth()+1
+    if (anio==anioVentas && mes==mesVentas){
+    ventasPorMes.push(precioMaquina(local.ventas[i].componentes))
+  }
+}
+  return ventasPorMes.reduce (function(total,valor){
+  return total + valor
+  })
+}
+// ventasMes(mes, anio): Obtener las ventas de un mes.
+
+console.log( ventasMes(1, 2019) ); // 1250
+console.log( ventasMes(2, 2019) );
+
+ventasVendedora(nombre): Obtener las ventas totales realizadas por una vendedora sin límite de fecha.
+
+console.log( ventasVendedora("Grace") ); // 900
