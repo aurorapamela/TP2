@@ -183,6 +183,17 @@ function ventasMes(mes,anio){
 console.log( ventasMes(1, 2019) ); // 1250
 console.log( ventasMes(2, 2019) );
 
-ventasVendedora(nombre): Obtener las ventas totales realizadas por una vendedora sin límite de fecha.
-
+// ventasVendedora(nombre): Obtener las ventas totales realizadas por una vendedora sin límite de fecha.
+function ventasVendedora(nombreVendedora){
+  var ventasVendedorasTotal=[];
+  for (var i=0; i<local.ventas.length;i++){
+    if (local.ventas[i].nombreVendedora===nombreVendedora){
+    ventasVendedorasTotal.push (precioMaquina(local.ventas[i].componentes))
+}
+}
+  return ventasVendedorasTotal.reduce (function(total,valor){
+  return total + valor
+  })
+}
 console.log( ventasVendedora("Grace") ); // 900
+console.log( ventasVendedora("Ada") ); // 670
