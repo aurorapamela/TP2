@@ -172,6 +172,8 @@ function ventasMes(mes,anio){
     var mesVentas=local.ventas[i].fecha.getMonth()+1
     if (anio==anioVentas && mes==mesVentas){
     ventasPorMes.push(precioMaquina(local.ventas[i].componentes))
+  } else {
+    ventasPorMes.push(0)
   }
 }
   return ventasPorMes.reduce (function(total,valor){
@@ -180,8 +182,8 @@ function ventasMes(mes,anio){
 }
 // ventasMes(mes, anio): Obtener las ventas de un mes.
 
-console.log( ventasMes(1, 2019) ); // 1250
-console.log( ventasMes(2, 2019) );
+console.log(ventasMes(1, 2019) ); // 1250
+console.log(ventasMes(2, 2019) );
 
 // ventasVendedora(nombre): Obtener las ventas totales realizadas por una vendedora sin límite de fecha.
 function ventasVendedora(nombreVendedora){
@@ -197,3 +199,33 @@ function ventasVendedora(nombreVendedora){
 }
 console.log( ventasVendedora("Grace") ); // 900
 console.log( ventasVendedora("Ada") ); // 670
+
+// componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo historicamente. El dato de la cantidad de ventas es el que indica la función cantidadVentasComponente
+function componenteMasVendido(){
+  var total=[]
+  var soloNumeros=[]
+  for (var i=0; i<local.precios.length;i++){
+    total.push (cantidadVentasComponente(local.precios[i].componente),local.precios[i].componente)
+  }
+  for (var j=0; j<total.length;j+=2){
+    soloNumeros.push(total[j])
+  }
+  var numeroMayor = Math.max.apply(null, soloNumeros);
+  var posicionNumeroMayor = total.indexOf(numeroMayor)
+  return total[posicionNumeroMayor+1]
+}
+console.log( componenteMasVendido() ); // Monitor GPRS 3000
+
+// huboVentas(mes, anio): que indica si hubo ventas en un mes determinado.
+
+function huboVentas(mes,anio){
+  if(ventasMes(mes, anio)>0){
+    return true
+  } else {
+    return false
+  }
+}
+
+console.log(huboVentas(3, 2019)); // false
+console.log(huboVentas(1, 2019)); // true
+console.log(huboVentas(2, 2019)); // true
