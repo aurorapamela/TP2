@@ -12,7 +12,7 @@ var local = {
   ventas: [
     { fecha: new Date(2019, 1, 4), nombreVendedora: "Grace", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1500"] },
     { fecha: new Date(2019, 0, 1), nombreVendedora: "Ada", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1500"] },
-    { fecha: new Date(2019, 0, 2), nombreVendedora: "Grace", componentes: ["Monitor ASC 543", "Motherboard MZI"] },
+    { fecha: new Date(2019, 0, 2), nombreVendedora: "Grace", componentes: ["Monitor ASC 543", "'Motherboard MZI'"] },
     { fecha: new Date(2019, 0, 10), nombreVendedora: "Ada", componentes: ["Monitor ASC 543", "Motherboard ASUS 1200"] },
     { fecha: new Date(2019, 0, 12), nombreVendedora: "Grace", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1200"] }
   ],
@@ -22,7 +22,7 @@ var local = {
     { componente: "Motherboard ASUS 1500", precio: 120 },
     { componente: "Monitor ASC 543", precio: 250 },
     { componente: "Motherboard ASUS 1200", precio: 100 },
-    { componente: "Motherboard MZI", precio: 30 },
+    { componente: "'Motherboard MZI'", precio: 30 },
     { componente: "HDD Toyiva", precio: 90 },
     { componente: "HDD Wezter Dishital", precio: 75 },
     { componente: "RAM Quinston", precio: 110 },
@@ -75,7 +75,7 @@ function precioMaquina (array){
 
 console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]) ); // 320 ($200 del monitor + $120 del motherboard)
 console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]))
-console.log(precioMaquina(["Monitor ASC 543", "Motherboard MZI"]))
+console.log(precioMaquina(["Monitor ASC 543", "'Motherboard MZI'"]))
 console.log(precioMaquina(["Monitor ASC 543", "Motherboard ASUS 1200"]))
 console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1200"]))
 
@@ -225,7 +225,56 @@ function huboVentas(mes,anio){
     return false
   }
 }
-
 console.log(huboVentas(3, 2019)); // false
 console.log(huboVentas(1, 2019)); // true
 console.log(huboVentas(2, 2019)); // true
+
+// Como se abrió una nueva sucursal en Caballito, ahora los datos de las ventas también tienen el nombre de la sucursal en la cual se realizó. Por ejemplo: { fecha: new Date(2019, 1, 1), nombreVendedora: "Ada", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1500"], sucursal: 'Centro' }. Por este cambio, se pide:
+// En las ventas ya existentes, tenemos que agregar la propiedad sucursal con el valor Centro (ya que es la sucursal original).
+for (var i = 0; i < local.ventas.length; i++) {
+  local.ventas[i].sucursal="Centro"
+  console.log(local.ventas)
+}
+// Agregar al objeto principal la propiedad sucursales: ['Centro', 'Caballito']
+local.sucursal=["Centro","Caballito"]
+console.log(local)
+// Cargar la siguiente información en el array ventas, creando sus respectivos objetos siguiendo el patrón: fecha, nombreVendedora, componentes, sucursal
+var data = [
+  {fecha: new Date(2019, 2, 12), nombreVendora:'Hedy', componentes:['Monitor GPRS 3000', 'HDD Toyiva'], sucursal: 'Centro'},
+  {fecha: new Date(2019, 2, 24), nombreVendora:'Sheryl', componentes:['Motherboard ASUS 1500', 'HDD Wezter Dishital'], sucursal: 'Caballito'},
+  {fecha: new Date(2019, 2, 1), nombreVendedora:'Ada', componentes:['Motherboard MZI', 'RAM Quinston Fury'], sucursal: 'Centro'},
+  {fecha: new Date(2019, 2, 11), nombreVendedora:'Grace', componentes:['Monitor ASC 543', 'RAM Quinston'], sucursal: 'Caballito'},
+  {fecha: new Date(2019, 2, 15), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1200', 'RAM Quinston Fury'], sucursal: 'Centro'},
+  {fecha: new Date(2019, 2, 12), nombreVendedora:'Hedy', componentes:['Motherboard ASUS 1500', 'HDD Toyiva'], sucursal: 'Caballito'},
+  {fecha: new Date(2019, 2, 21), nombreVendedora:'Grace', componentes:['Motherboard MZI', 'RAM Quinston'], sucursal: 'Centro'},
+  {fecha: new Date(2019, 2, 8), nombreVendedora:'Sheryl', componentes:['Monitor ASC 543', 'HDD Wezter Dishital'], sucursal: 'Centro'},
+  {fecha: new Date(2019, 2, 16), nombreVendedora:'Sheryl', componentes:['Monitor GPRS 3000', 'RAM Quinston Fury'], sucursal: 'Centro'},
+  {fecha: new Date(2019, 2, 27), nombreVendedora:'Hedy', componentes:['Motherboard ASUS 1200', 'HDD Toyiva'], sucursal: 'Caballito'},
+  {fecha: new Date(2019, 2, 22), nombreVendedora:'Grace', componentes:['Monitor ASC 543', 'HDD Wezter Dishital'], sucursal: 'Centro'},
+  {fecha: new Date(2019, 2, 5), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1500', 'RAM Quinston'], sucursal: 'Centro'},
+  {fecha: new Date(2019, 2, 1), nombreVendedora:'Grace', componentes:['Motherboard MZI', 'HDD Wezter Dishital'], sucursal: 'Centro'},
+  {fecha: new Date(2019, 2, 7), nombreVendedora:'Sheryl', componentes:['Monitor GPRS 3000', 'RAM Quinston'], sucursal: 'Caballito'},
+  {fecha: new Date(2019, 2, 14), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1200', 'HDD Toyiva'], sucursal: 'Centro'},
+]
+
+for (var i = 0; i < data.length; i++) {
+  local.ventas.push(data[i])
+}
+console.log(local.ventas)
+
+// Crear la función ventasSucursal(sucursal), que obtiene las ventas totales realizadas por una sucursal sin límite de fecha.
+function ventasSucursal(nombreSucursal){
+  var cantidadVendidoSucursal=[];
+  for (var i=0;i<local.ventas.length;i++){
+    if (nombreSucursal=== local.ventas[i].sucursal){
+      cantidadVendidoSucursal.push(precioMaquina(local.ventas[i].componentes))
+    } else {
+      cantidadVendidoSucursal.push(0)
+    }
+  }
+  return cantidadVendidoSucursal.reduce (function(total,valor){
+  return total + valor
+  })
+}
+console.log( ventasSucursal("Centro") ); // 4195
+console.log( ventasSucursal("Caballito") ); // 
