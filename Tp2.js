@@ -12,7 +12,7 @@ var local = {
   ventas: [
     { fecha: new Date(2019, 1, 4), nombreVendedora: "Grace", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1500"] },
     { fecha: new Date(2019, 0, 1), nombreVendedora: "Ada", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1500"] },
-    { fecha: new Date(2019, 0, 2), nombreVendedora: "Grace", componentes: ["Monitor ASC 543", "'Motherboard MZI'"] },
+    { fecha: new Date(2019, 0, 2), nombreVendedora: "Grace", componentes: ["Monitor ASC 543", "Motherboard MZI"] },
     { fecha: new Date(2019, 0, 10), nombreVendedora: "Ada", componentes: ["Monitor ASC 543", "Motherboard ASUS 1200"] },
     { fecha: new Date(2019, 0, 12), nombreVendedora: "Grace", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1200"] }
   ],
@@ -22,7 +22,7 @@ var local = {
     { componente: "Motherboard ASUS 1500", precio: 120 },
     { componente: "Monitor ASC 543", precio: 250 },
     { componente: "Motherboard ASUS 1200", precio: 100 },
-    { componente: "'Motherboard MZI'", precio: 30 },
+    { componente: "Motherboard MZI", precio: 30 },
     { componente: "HDD Toyiva", precio: 90 },
     { componente: "HDD Wezter Dishital", precio: 75 },
     { componente: "RAM Quinston", precio: 110 },
@@ -75,7 +75,7 @@ function precioMaquina (array){
 
 console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]) ); // 320 ($200 del monitor + $120 del motherboard)
 console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]))
-console.log(precioMaquina(["Monitor ASC 543", "'Motherboard MZI'"]))
+console.log(precioMaquina(["Monitor ASC 543", "Motherboard MZI"]))
 console.log(precioMaquina(["Monitor ASC 543", "Motherboard ASUS 1200"]))
 console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1200"]))
 
@@ -240,21 +240,21 @@ local.sucursal=["Centro","Caballito"]
 console.log(local)
 // Cargar la siguiente información en el array ventas, creando sus respectivos objetos siguiendo el patrón: fecha, nombreVendedora, componentes, sucursal
 var data = [
-  {fecha: new Date(2019, 2, 12), nombreVendora:'Hedy', componentes:['Monitor GPRS 3000', 'HDD Toyiva'], sucursal: 'Centro'},
-  {fecha: new Date(2019, 2, 24), nombreVendora:'Sheryl', componentes:['Motherboard ASUS 1500', 'HDD Wezter Dishital'], sucursal: 'Caballito'},
-  {fecha: new Date(2019, 2, 1), nombreVendedora:'Ada', componentes:['Motherboard MZI', 'RAM Quinston Fury'], sucursal: 'Centro'},
-  {fecha: new Date(2019, 2, 11), nombreVendedora:'Grace', componentes:['Monitor ASC 543', 'RAM Quinston'], sucursal: 'Caballito'},
-  {fecha: new Date(2019, 2, 15), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1200', 'RAM Quinston Fury'], sucursal: 'Centro'},
-  {fecha: new Date(2019, 2, 12), nombreVendedora:'Hedy', componentes:['Motherboard ASUS 1500', 'HDD Toyiva'], sucursal: 'Caballito'},
-  {fecha: new Date(2019, 2, 21), nombreVendedora:'Grace', componentes:['Motherboard MZI', 'RAM Quinston'], sucursal: 'Centro'},
-  {fecha: new Date(2019, 2, 8), nombreVendedora:'Sheryl', componentes:['Monitor ASC 543', 'HDD Wezter Dishital'], sucursal: 'Centro'},
-  {fecha: new Date(2019, 2, 16), nombreVendedora:'Sheryl', componentes:['Monitor GPRS 3000', 'RAM Quinston Fury'], sucursal: 'Centro'},
-  {fecha: new Date(2019, 2, 27), nombreVendedora:'Hedy', componentes:['Motherboard ASUS 1200', 'HDD Toyiva'], sucursal: 'Caballito'},
-  {fecha: new Date(2019, 2, 22), nombreVendedora:'Grace', componentes:['Monitor ASC 543', 'HDD Wezter Dishital'], sucursal: 'Centro'},
-  {fecha: new Date(2019, 2, 5), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1500', 'RAM Quinston'], sucursal: 'Centro'},
-  {fecha: new Date(2019, 2, 1), nombreVendedora:'Grace', componentes:['Motherboard MZI', 'HDD Wezter Dishital'], sucursal: 'Centro'},
-  {fecha: new Date(2019, 2, 7), nombreVendedora:'Sheryl', componentes:['Monitor GPRS 3000', 'RAM Quinston'], sucursal: 'Caballito'},
-  {fecha: new Date(2019, 2, 14), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1200', 'HDD Toyiva'], sucursal: 'Centro'},
+  {fecha: new Date(2019, 2, 12), nombreVendora:'Hedy', componentes:['Monitor GPRS 3000', 'HDD Toyiva'], sucursal:'Centro'},
+  {fecha: new Date(2019, 2, 24), nombreVendora:'Sheryl', componentes:['Motherboard ASUS 1500', 'HDD Wezter Dishital'], sucursal:'Caballito'},
+  {fecha: new Date(2019, 2, 1), nombreVendedora:'Ada', componentes:['Motherboard MZI', 'RAM Quinston Fury'], sucursal:'Centro'},
+  {fecha: new Date(2019, 2, 11), nombreVendedora:'Grace', componentes:['Monitor ASC 543', 'RAM Quinston'], sucursal:'Caballito'},
+  {fecha: new Date(2019, 2, 15), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1200', 'RAM Quinston Fury'], sucursal:'Centro'},
+  {fecha: new Date(2019, 2, 12), nombreVendedora:'Hedy', componentes:['Motherboard ASUS 1500', 'HDD Toyiva'], sucursal:'Caballito'},
+  {fecha: new Date(2019, 2, 21), nombreVendedora:'Grace', componentes:['Motherboard MZI', 'RAM Quinston'], sucursal:'Centro'},
+  {fecha: new Date(2019, 2, 8), nombreVendedora:'Sheryl', componentes:['Monitor ASC 543', 'HDD Wezter Dishital'], sucursal:'Centro'},
+  {fecha: new Date(2019, 2, 16), nombreVendedora:'Sheryl', componentes:['Monitor GPRS 3000', 'RAM Quinston Fury'], sucursal:'Centro'},
+  {fecha: new Date(2019, 2, 27), nombreVendedora:'Hedy', componentes:['Motherboard ASUS 1200', 'HDD Toyiva'], sucursal:'Caballito'},
+  {fecha: new Date(2019, 2, 22), nombreVendedora:'Grace', componentes:['Monitor ASC 543', 'HDD Wezter Dishital'], sucursal:'Centro'},
+  {fecha: new Date(2019, 2, 5), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1500', 'RAM Quinston'], sucursal:'Centro'},
+  {fecha: new Date(2019, 2, 1), nombreVendedora:'Grace', componentes:['Motherboard MZI', 'HDD Wezter Dishital'], sucursal:'Centro'},
+  {fecha: new Date(2019, 2, 7), nombreVendedora:'Sheryl', componentes:['Monitor GPRS 3000', 'RAM Quinston'], sucursal:'Caballito'},
+  {fecha: new Date(2019, 2, 14), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1200', 'HDD Toyiva'], sucursal:'Centro'},
 ]
 
 for (var i = 0; i < data.length; i++) {
@@ -268,8 +268,6 @@ function ventasSucursal(nombreSucursal){
   for (var i=0;i<local.ventas.length;i++){
     if (nombreSucursal=== local.ventas[i].sucursal){
       cantidadVendidoSucursal.push(precioMaquina(local.ventas[i].componentes))
-    } else {
-      cantidadVendidoSucursal.push(0)
     }
   }
   return cantidadVendidoSucursal.reduce (function(total,valor){
@@ -277,4 +275,26 @@ function ventasSucursal(nombreSucursal){
   })
 }
 console.log( ventasSucursal("Centro") ); // 4195
-console.log( ventasSucursal("Caballito") ); // 
+console.log( ventasSucursal("Caballito") ); //
+console.log(precioMaquina(local.ventas[0].componentes),local.ventas[0].sucursal)
+console.log(precioMaquina(local.ventas[1].componentes),local.ventas[1].sucursal)
+console.log(precioMaquina(local.ventas[2].componentes),local.ventas[2].sucursal)
+console.log(precioMaquina(local.ventas[3].componentes),local.ventas[3].sucursal)
+console.log(precioMaquina(local.ventas[4].componentes),local.ventas[4].sucursal)
+console.log(precioMaquina(local.ventas[5].componentes),local.ventas[5].sucursal)
+console.log(precioMaquina(local.ventas[6].componentes),local.ventas[6].sucursal)
+console.log(precioMaquina(local.ventas[7].componentes),local.ventas[7].sucursal)
+console.log(precioMaquina(local.ventas[8].componentes),local.ventas[8].sucursal)
+console.log(precioMaquina(local.ventas[9].componentes),local.ventas[9].sucursal)
+console.log(precioMaquina(local.ventas[10].componentes),local.ventas[10].sucursal)
+console.log(precioMaquina(local.ventas[11].componentes),local.ventas[11].sucursal)
+console.log(precioMaquina(local.ventas[12].componentes),local.ventas[12].sucursal)
+console.log(precioMaquina(local.ventas[13].componentes),local.ventas[13].sucursal)
+console.log(precioMaquina(local.ventas[14].componentes),local.ventas[14].sucursal)
+console.log(precioMaquina(local.ventas[15].componentes),local.ventas[15].sucursal)
+console.log(precioMaquina(local.ventas[16].componentes),local.ventas[16].sucursal)
+console.log(precioMaquina(local.ventas[17].componentes),local.ventas[17].sucursal)
+console.log(precioMaquina(local.ventas[18].componentes),local.ventas[18].sucursal)
+console.log(precioMaquina(local.ventas[19].componentes),local.ventas[19].sucursal)
+
+// Las funciones ventasSucursal y ventasVendedora tienen mucho código en común, ya que es la misma funcionalidad pero trabajando con una propiedad distinta. Entonces, ¿cómo harías para que ambas funciones reutilicen código y evitemos repetir?
