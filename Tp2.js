@@ -276,6 +276,7 @@ function ventasSucursal(nombreSucursal){
 }
 console.log( ventasSucursal("Centro") ); // 4195
 console.log( ventasSucursal("Caballito") ); //
+
 console.log(precioMaquina(local.ventas[0].componentes),local.ventas[0].sucursal)
 console.log(precioMaquina(local.ventas[1].componentes),local.ventas[1].sucursal)
 console.log(precioMaquina(local.ventas[2].componentes),local.ventas[2].sucursal)
@@ -298,3 +299,43 @@ console.log(precioMaquina(local.ventas[18].componentes),local.ventas[18].sucursa
 console.log(precioMaquina(local.ventas[19].componentes),local.ventas[19].sucursal)
 
 // Las funciones ventasSucursal y ventasVendedora tienen mucho código en común, ya que es la misma funcionalidad pero trabajando con una propiedad distinta. Entonces, ¿cómo harías para que ambas funciones reutilicen código y evitemos repetir?
+
+function ventas(parametro){
+  var cantidadVendido=[];
+  for (var i=0;i<local.ventas.length;i++){
+    if (parametro=== local.ventas[i].sucursal || parametro=== local.ventas[i].nombreVendedora ){
+      cantidadVendido.push(precioMaquina(local.ventas[i].componentes))
+    }
+  }
+  return cantidadVendido.reduce (function(total,valor){
+  return total + valor
+  })
+}
+console.log(ventas("Centro") ); // 4195
+console.log(ventas("Ada") );
+console.log(ventas("Grace") );
+console.log(ventas("Hedy") ); // 400
+
+// Crear la función sucursalDelMes(mes, anio), que se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la sucursal que más vendió en plata en el mes. No cantidad de ventas, sino importe total de las ventas. El importe de una venta es el que indica la función precioMaquina.
+function sucursalDelMes(mes, anio){
+  var totalesSucursalesMeses = [];
+  var soloNumerosVentasSucursalesPorMes = [];
+  for (var i=0; i<local.ventas.length;i++){
+    var anioVentas=local.ventas[i].fecha.getFullYear()
+    var mesVentas=local.ventas[i].fecha.getMonth()+1
+      if (mes==mesVentas && anio==anioVentas){
+      totalesSucursalesMeses.push (precioMaquina(local.ventas[i].componentes),local.ventas[i].sucursal)
+      }
+    }
+  for (var j=0; j<totalesSucursalesMeses.length;j+=2){
+    soloNumerosVentasSucursalesPorMes.push(totalesSucursalesMeses[j])
+  }
+  var numeroMayor = Math.max.apply(null, soloNumerosVentasSucursalesPorMes);
+  var posicionNumeroMayor = totalesSucursalesMeses.indexOf(numeroMayor)
+  return totalesSucursalesMeses[posicionNumeroMayor+1]
+}
+
+console.log(sucursalDelMes(1, 2019)); // "Centro"
+console.log(sucursalDelMes(2, 2019)); //
+console.log(sucursalDelMes(3, 2019));
+// console.log(sucursalDelMes(0, 2019));
