@@ -100,42 +100,7 @@ console.log( cantidadVentasComponente("Monitor ASC 543") ); //2
 console.log( cantidadVentasComponente("Monitor GPRS 3000") ); //3
 
 // vendedoraDelMes(mes, anio), se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la vendedora que más vendió en plata en el mes. O sea no cantidad de ventas, sino importe total de las ventas. El importe de una venta es el que indica la función precioMaquina.
-
 // console.log( vendedoraDelMes(1, 2019) ); // "Ada" (vendio por $670, una máquina de $320 y otra de $350)
-// var ventasVendedoras={
-// Ada:0,
-// Grace:0,
-// Hedy:0,
-// Sheryl:0,
-// }
-// for (i=0; i<local.vendedoras.length;i++){
-//   // console.log(local.vendedoras[i])
-//   for (j=0;j<local.ventas.length;j++){
-//     if (local.ventas[j].nombreVendedora===local.vendedoras[i]){
-//       console.log('hola',local.vendedoras[i],local.ventas[i].componentes)
-//
-//     }
-//   }
-// }
-// console.log(ventasVendedoras)
-
-// var totalVentasGrace=0
-// var totalVentasAda=0
-// for (i=0; i<local.ventas.length;i++){
-//   if (local.ventas[i].nombreVendedora==='Grace'){
-//     totalVentasGrace+= precioMaquina(local.ventas[i].componentes)
-//   } else if (local.ventas[i].nombreVendedora==='Ada'){
-//     totalVentasAda+= precioMaquina(local.ventas[i].componentes)
-//   }
-// }
-// console.log('Grace' , totalVentasGrace)
-// console.log('Ada' , totalVentasAda)
-//
-// if (totalVentasGrace>totalVentasAda){
-//   console.log('Grace vendió más')
-// } else {
-//   console.log('Ada vendió más')
-// }
 
 function vendedoraDelMes(anio,mes){
   var adaVentas=[];
@@ -165,6 +130,39 @@ if(ventasAda>ventasGrace){
 }
 console.log(vendedoraDelMes(2019,1))
 
+function vendedoraDelMes(mes, anio){
+  var arrayVendedoras = [];
+  for (var j=0; j<local.vendedoras.length;j++){
+    var objetoNuevo=
+      { nombre: local.vendedoras[j],
+        ventas:0,
+      }
+    for (var i=0; i<local.ventas.length;i++){
+      if(local.ventas[i].fecha.getMonth()===mes && local.ventas[i].fecha.getFullYear()==anio){
+        if(local.vendedoras[j]===local.ventas[i].nombreVendedora){
+          if (objetoNuevo.nombre === local.ventas[i].nombreVendedora){
+            objetoNuevo.ventas=objetoNuevo.ventas + precioMaquina(local.ventas[i].componentes)
+          }
+        }
+      }
+    }
+    arrayVendedoras.push(objetoNuevo)
+  }
+  console.log(arrayVendedoras)
+  var valorMaximo=0;
+  var nombreVendedora='';
+  for (var k = 0;k<arrayVendedoras.length;k++){
+    if(valorMaximo<arrayVendedoras[k].ventas){
+      valorMaximo=arrayVendedoras[k].ventas
+      nombreVendedora=arrayVendedoras[k].nombre
+    }
+  }
+  return nombreVendedora
+}
+console.log(vendedoraDelMes(1,2019))
+
+// ventasMes(mes, anio): Obtener las ventas de un mes.
+
 function ventasMes(mes,anio){
   var ventasPorMes=[];
   for (var i=0; i<local.ventas.length;i++){
@@ -180,7 +178,6 @@ function ventasMes(mes,anio){
   return total + valor
   })
 }
-// ventasMes(mes, anio): Obtener las ventas de un mes.
 
 console.log(ventasMes(1, 2019) ); // 1250
 console.log(ventasMes(2, 2019) );
@@ -240,21 +237,21 @@ local.sucursal=["Centro","Caballito"]
 console.log(local)
 // Cargar la siguiente información en el array ventas, creando sus respectivos objetos siguiendo el patrón: fecha, nombreVendedora, componentes, sucursal
 var data = [
-  {fecha: new Date(2019, 2, 12), nombreVendora:'Hedy', componentes:['Monitor GPRS 3000', 'HDD Toyiva'], sucursal:'Centro'},
-  {fecha: new Date(2019, 2, 24), nombreVendora:'Sheryl', componentes:['Motherboard ASUS 1500', 'HDD Wezter Dishital'], sucursal:'Caballito'},
-  {fecha: new Date(2019, 2, 1), nombreVendedora:'Ada', componentes:['Motherboard MZI', 'RAM Quinston Fury'], sucursal:'Centro'},
-  {fecha: new Date(2019, 2, 11), nombreVendedora:'Grace', componentes:['Monitor ASC 543', 'RAM Quinston'], sucursal:'Caballito'},
-  {fecha: new Date(2019, 2, 15), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1200', 'RAM Quinston Fury'], sucursal:'Centro'},
-  {fecha: new Date(2019, 2, 12), nombreVendedora:'Hedy', componentes:['Motherboard ASUS 1500', 'HDD Toyiva'], sucursal:'Caballito'},
-  {fecha: new Date(2019, 2, 21), nombreVendedora:'Grace', componentes:['Motherboard MZI', 'RAM Quinston'], sucursal:'Centro'},
-  {fecha: new Date(2019, 2, 8), nombreVendedora:'Sheryl', componentes:['Monitor ASC 543', 'HDD Wezter Dishital'], sucursal:'Centro'},
-  {fecha: new Date(2019, 2, 16), nombreVendedora:'Sheryl', componentes:['Monitor GPRS 3000', 'RAM Quinston Fury'], sucursal:'Centro'},
-  {fecha: new Date(2019, 2, 27), nombreVendedora:'Hedy', componentes:['Motherboard ASUS 1200', 'HDD Toyiva'], sucursal:'Caballito'},
-  {fecha: new Date(2019, 2, 22), nombreVendedora:'Grace', componentes:['Monitor ASC 543', 'HDD Wezter Dishital'], sucursal:'Centro'},
-  {fecha: new Date(2019, 2, 5), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1500', 'RAM Quinston'], sucursal:'Centro'},
-  {fecha: new Date(2019, 2, 1), nombreVendedora:'Grace', componentes:['Motherboard MZI', 'HDD Wezter Dishital'], sucursal:'Centro'},
-  {fecha: new Date(2019, 2, 7), nombreVendedora:'Sheryl', componentes:['Monitor GPRS 3000', 'RAM Quinston'], sucursal:'Caballito'},
-  {fecha: new Date(2019, 2, 14), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1200', 'HDD Toyiva'], sucursal:'Centro'},
+  {fecha: new Date(2019, 1, 12), nombreVendora:'Hedy', componentes:['Monitor GPRS 3000', 'HDD Toyiva'], sucursal:'Centro'},
+  {fecha: new Date(2019, 1, 24), nombreVendora:'Sheryl', componentes:['Motherboard ASUS 1500', 'HDD Wezter Dishital'], sucursal:'Caballito'},
+  {fecha: new Date(2019, 1, 1), nombreVendedora:'Ada', componentes:['Motherboard MZI', 'RAM Quinston Fury'], sucursal:'Centro'},
+  {fecha: new Date(2019, 1, 11), nombreVendedora:'Grace', componentes:['Monitor ASC 543', 'RAM Quinston'], sucursal:'Caballito'},
+  {fecha: new Date(2019, 1, 15), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1200', 'RAM Quinston Fury'], sucursal:'Centro'},
+  {fecha: new Date(2019, 1, 12), nombreVendedora:'Hedy', componentes:['Motherboard ASUS 1500', 'HDD Toyiva'], sucursal:'Caballito'},
+  {fecha: new Date(2019, 1, 21), nombreVendedora:'Grace', componentes:['Motherboard MZI', 'RAM Quinston'], sucursal:'Centro'},
+  {fecha: new Date(2019, 1, 8), nombreVendedora:'Sheryl', componentes:['Monitor ASC 543', 'HDD Wezter Dishital'], sucursal:'Centro'},
+  {fecha: new Date(2019, 1, 16), nombreVendedora:'Sheryl', componentes:['Monitor GPRS 3000', 'RAM Quinston Fury'], sucursal:'Centro'},
+  {fecha: new Date(2019, 1, 27), nombreVendedora:'Hedy', componentes:['Motherboard ASUS 1200', 'HDD Toyiva'], sucursal:'Caballito'},
+  {fecha: new Date(2019, 1, 22), nombreVendedora:'Grace', componentes:['Monitor ASC 543', 'HDD Wezter Dishital'], sucursal:'Centro'},
+  {fecha: new Date(2019, 1, 5), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1500', 'RAM Quinston'], sucursal:'Centro'},
+  {fecha: new Date(2019, 1, 1), nombreVendedora:'Grace', componentes:['Motherboard MZI', 'HDD Wezter Dishital'], sucursal:'Centro'},
+  {fecha: new Date(2019, 1, 7), nombreVendedora:'Sheryl', componentes:['Monitor GPRS 3000', 'RAM Quinston'], sucursal:'Caballito'},
+  {fecha: new Date(2019, 1, 14), nombreVendedora:'Ada', componentes:['Motherboard ASUS 1200', 'HDD Toyiva'], sucursal:'Centro'},
 ]
 
 for (var i = 0; i < data.length; i++) {
@@ -336,6 +333,81 @@ function sucursalDelMes(mes, anio){
 }
 
 console.log(sucursalDelMes(1, 2019)); // "Centro"
-console.log(sucursalDelMes(2, 2019)); //
-console.log(sucursalDelMes(3, 2019));
-// console.log(sucursalDelMes(0, 2019));
+
+// Para tener una mejor muestra de como está resultando el local, queremos desarrollar un reporte que nos muestre las ventas por sucursal y por mes. Para esto, necesitamos crear las siguientes funciones:
+// renderPorMes(): Muestra una lista ordenada del importe total vendido por cada mes/año
+
+// function renderPorMes(){
+//   var mes=[];
+//   var anio=[];
+//   var total=[];
+//   for (var i=0; i<local.ventas.length;i++){
+//     mes.push(local.ventas[i].fecha.getMonth()+1)
+//     anio.push(local.ventas[i].fecha.getFullYear())
+//     var mesYAnio={
+//       elMes: mes[i],
+//       elAnio: anio[i],
+//       ventas: ventasMes(mes[i], anio[i]),
+//     }
+//   if(mesYAnio.elMes===mes[i] && mesYAnio.elAnio==anio[i]){
+//     if (!mesYAnio.elMes[i]){
+//       total.push(mesYAnio)
+//     }
+//   }
+// }
+// console.log(total)
+// }
+// console.log(renderPorMes());
+
+function renderPorMes(){
+  var meses=[];
+  for (var i=0; i<local.ventas.length;i++){
+    meses.push(local.ventas[i].fecha.getMonth()+1)
+  }
+  var anio=[];
+  for (var j=0; j<local.ventas.length;j++){
+    anio.push(local.ventas[j].fecha.getFullYear())
+  }
+  var vendido=[];
+  for (var k=0; k<meses.length;k++){
+    vendido.push(ventasMes(meses[k],anio[k]));
+  }
+
+  return 'Ventas por mes: '+'\n'+'Total de enero 2019:'+vendido[0]+'\n'+'Total de febrero 2019: '+vendido[1]
+}
+console.log(renderPorMes());
+
+// Ventas por mes:
+//   Total de enero 2019: 1250
+//   Total de febrero 2019: 4210
+
+function vendedoraDelMes(mes, anio){
+  var arrayVendedoras = [];
+  for (var j=0; j<local.vendedoras.length;j++){
+    var objetoNuevo=
+      { nombre: local.vendedoras[j],
+        ventas:0,
+      }
+    for (var i=0; i<local.ventas.length;i++){
+      if(local.ventas[i].fecha.getMonth()===mes && local.ventas[i].fecha.getFullYear()==anio){
+        if(local.vendedoras[j]===local.ventas[i].nombreVendedora){
+          if (objetoNuevo.nombre === local.ventas[i].nombreVendedora){
+            objetoNuevo.ventas=objetoNuevo.ventas + precioMaquina(local.ventas[i].componentes)
+          }
+        }
+      }
+    }
+    arrayVendedoras.push(objetoNuevo)
+  }
+  console.log(arrayVendedoras)
+  var valorMaximo=0;
+  var nombreVendedora='';
+  for (var k = 0;k<arrayVendedoras.length;k++){
+    if(valorMaximo<arrayVendedoras[k].ventas){
+      valorMaximo=arrayVendedoras[k].ventas
+      nombreVendedora=arrayVendedoras[k].nombre
+    }
+  }
+  return nombreVendedora
+}
+console.log(vendedoraDelMes(1,2019))
