@@ -411,3 +411,24 @@ function vendedoraDelMes(mes, anio){
   return nombreVendedora
 }
 console.log(vendedoraDelMes(1,2019))
+
+// renderPorSucursal(): Muestra una lista del importe total vendido por cada sucursal
+
+function renderPorSucursal(){
+  var sucursalesTodas=[];
+  for (j=0; j<local.ventas.length;j++){
+    sucursalesTodas.push(local.ventas[j].sucursal);
+  }
+  var cantidadVendidoSucursal=[];
+  for (i=0; i<local.ventas.length;i++){
+    if('Centro'=== local.ventas[i].sucursal || 'Caballito'=== local.ventas[i].sucursal){
+      cantidadVendidoSucursal.push(ventasSucursal(local.ventas[i].sucursal))
+    }
+  }
+  return 'Ventas por sucursal'+'\n'+'Total de Centro 2019:'+cantidadVendidoSucursal[0]+'\n'+'Total de Caballito 2019: '+cantidadVendidoSucursal[6]
+}
+
+console.log( renderPorSucursal() );
+// Ventas por sucursal:
+//   Total de Centro: 4195
+//   Total de Caballito: 1265
