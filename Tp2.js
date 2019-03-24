@@ -337,27 +337,27 @@ console.log(sucursalDelMes(1, 2019)); // "Centro"
 // Para tener una mejor muestra de como está resultando el local, queremos desarrollar un reporte que nos muestre las ventas por sucursal y por mes. Para esto, necesitamos crear las siguientes funciones:
 // renderPorMes(): Muestra una lista ordenada del importe total vendido por cada mes/año
 
-// function renderPorMes(){
-//   var mes=[];
-//   var anio=[];
-//   var total=[];
-//   for (var i=0; i<local.ventas.length;i++){
-//     mes.push(local.ventas[i].fecha.getMonth()+1)
-//     anio.push(local.ventas[i].fecha.getFullYear())
-//     var mesYAnio={
-//       elMes: mes[i],
-//       elAnio: anio[i],
-//       ventas: ventasMes(mes[i], anio[i]),
-//     }
-//   if(mesYAnio.elMes===mes[i] && mesYAnio.elAnio==anio[i]){
-//     if (!mesYAnio.elMes[i]){
-//       total.push(mesYAnio)
-//     }
-//   }
-// }
-// console.log(total)
-// }
-// console.log(renderPorMes());
+function renderPorMes(){
+  var mes=[];
+  var anio=[];
+  var total=[];
+  for (var i=0; i<local.ventas.length;i++){
+    mes.push(local.ventas[i].fecha.getMonth()+1)
+    anio.push(local.ventas[i].fecha.getFullYear())
+    var mesYAnio={
+      elMes: mes[i],
+      elAnio: anio[i],
+      ventas: ventasMes(mes[i], anio[i]),
+    }
+  if(mesYAnio.elMes===mes[i] && mesYAnio.elAnio==anio[i]){
+    if (!mesYAnio.elMes[i]){
+      total.push(mesYAnio)
+    }
+  }
+}
+console.log(total)
+}
+console.log(renderPorMes());
 
 function renderPorMes(){
   var meses=[];
@@ -416,6 +416,6 @@ console.log( renderPorSucursal() );
 // Vendedora que más ingresos generó: Grace
 
 function render (){
-  return 'Reporte' + '\n' + renderPorMes() +'\n' + renderPorSucursal() + '\n' + 'Producto estrella: ' + componenteMasVendido() + 'Vendedora que más ingresos generó: ' +'\n'
+  return 'Reporte' + '\n' + renderPorMes() +'\n' + renderPorSucursal() + '\n' + 'Producto estrella: ' + componenteMasVendido() +'\n' + 'Vendedora que más ingresos generó: ' 
 }
 console.log (render())
