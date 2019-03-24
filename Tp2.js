@@ -217,9 +217,9 @@ console.log( componenteMasVendido() ); // Monitor GPRS 3000
 
 function huboVentas(mes,anio){
   if(ventasMes(mes, anio)>0){
-    return true
+    return true + ' hubo ventas'
   } else {
-    return false
+    return false + ' no hubo ventas'
   }
 }
 console.log(huboVentas(3, 2019)); // false
@@ -230,11 +230,11 @@ console.log(huboVentas(2, 2019)); // true
 // En las ventas ya existentes, tenemos que agregar la propiedad sucursal con el valor Centro (ya que es la sucursal original).
 for (var i = 0; i < local.ventas.length; i++) {
   local.ventas[i].sucursal="Centro"
-  console.log(local.ventas)
+  // console.log(local.ventas)
 }
 // Agregar al objeto principal la propiedad sucursales: ['Centro', 'Caballito']
 local.sucursal=["Centro","Caballito"]
-console.log(local)
+// console.log(local)
 // Cargar la siguiente información en el array ventas, creando sus respectivos objetos siguiendo el patrón: fecha, nombreVendedora, componentes, sucursal
 var data = [
   {fecha: new Date(2019, 1, 12), nombreVendora:'Hedy', componentes:['Monitor GPRS 3000', 'HDD Toyiva'], sucursal:'Centro'},
@@ -257,7 +257,7 @@ var data = [
 for (var i = 0; i < data.length; i++) {
   local.ventas.push(data[i])
 }
-console.log(local.ventas)
+// console.log(local.ventas)
 
 // Crear la función ventasSucursal(sucursal), que obtiene las ventas totales realizadas por una sucursal sin límite de fecha.
 function ventasSucursal(nombreSucursal){
@@ -274,26 +274,26 @@ function ventasSucursal(nombreSucursal){
 console.log( ventasSucursal("Centro") ); // 4195
 console.log( ventasSucursal("Caballito") ); //
 
-console.log(precioMaquina(local.ventas[0].componentes),local.ventas[0].sucursal)
-console.log(precioMaquina(local.ventas[1].componentes),local.ventas[1].sucursal)
-console.log(precioMaquina(local.ventas[2].componentes),local.ventas[2].sucursal)
-console.log(precioMaquina(local.ventas[3].componentes),local.ventas[3].sucursal)
-console.log(precioMaquina(local.ventas[4].componentes),local.ventas[4].sucursal)
-console.log(precioMaquina(local.ventas[5].componentes),local.ventas[5].sucursal)
-console.log(precioMaquina(local.ventas[6].componentes),local.ventas[6].sucursal)
-console.log(precioMaquina(local.ventas[7].componentes),local.ventas[7].sucursal)
-console.log(precioMaquina(local.ventas[8].componentes),local.ventas[8].sucursal)
-console.log(precioMaquina(local.ventas[9].componentes),local.ventas[9].sucursal)
-console.log(precioMaquina(local.ventas[10].componentes),local.ventas[10].sucursal)
-console.log(precioMaquina(local.ventas[11].componentes),local.ventas[11].sucursal)
-console.log(precioMaquina(local.ventas[12].componentes),local.ventas[12].sucursal)
-console.log(precioMaquina(local.ventas[13].componentes),local.ventas[13].sucursal)
-console.log(precioMaquina(local.ventas[14].componentes),local.ventas[14].sucursal)
-console.log(precioMaquina(local.ventas[15].componentes),local.ventas[15].sucursal)
-console.log(precioMaquina(local.ventas[16].componentes),local.ventas[16].sucursal)
-console.log(precioMaquina(local.ventas[17].componentes),local.ventas[17].sucursal)
-console.log(precioMaquina(local.ventas[18].componentes),local.ventas[18].sucursal)
-console.log(precioMaquina(local.ventas[19].componentes),local.ventas[19].sucursal)
+// console.log(precioMaquina(local.ventas[0].componentes),local.ventas[0].sucursal)
+// console.log(precioMaquina(local.ventas[1].componentes),local.ventas[1].sucursal)
+// console.log(precioMaquina(local.ventas[2].componentes),local.ventas[2].sucursal)
+// console.log(precioMaquina(local.ventas[3].componentes),local.ventas[3].sucursal)
+// console.log(precioMaquina(local.ventas[4].componentes),local.ventas[4].sucursal)
+// console.log(precioMaquina(local.ventas[5].componentes),local.ventas[5].sucursal)
+// console.log(precioMaquina(local.ventas[6].componentes),local.ventas[6].sucursal)
+// console.log(precioMaquina(local.ventas[7].componentes),local.ventas[7].sucursal)
+// console.log(precioMaquina(local.ventas[8].componentes),local.ventas[8].sucursal)
+// console.log(precioMaquina(local.ventas[9].componentes),local.ventas[9].sucursal)
+// console.log(precioMaquina(local.ventas[10].componentes),local.ventas[10].sucursal)
+// console.log(precioMaquina(local.ventas[11].componentes),local.ventas[11].sucursal)
+// console.log(precioMaquina(local.ventas[12].componentes),local.ventas[12].sucursal)
+// console.log(precioMaquina(local.ventas[13].componentes),local.ventas[13].sucursal)
+// console.log(precioMaquina(local.ventas[14].componentes),local.ventas[14].sucursal)
+// console.log(precioMaquina(local.ventas[15].componentes),local.ventas[15].sucursal)
+// console.log(precioMaquina(local.ventas[16].componentes),local.ventas[16].sucursal)
+// console.log(precioMaquina(local.ventas[17].componentes),local.ventas[17].sucursal)
+// console.log(precioMaquina(local.ventas[18].componentes),local.ventas[18].sucursal)
+// console.log(precioMaquina(local.ventas[19].componentes),local.ventas[19].sucursal)
 
 // Las funciones ventasSucursal y ventasVendedora tienen mucho código en común, ya que es la misma funcionalidad pero trabajando con una propiedad distinta. Entonces, ¿cómo harías para que ambas funciones reutilicen código y evitemos repetir?
 
@@ -381,36 +381,6 @@ console.log(renderPorMes());
 //   Total de enero 2019: 1250
 //   Total de febrero 2019: 4210
 
-function vendedoraDelMes(mes, anio){
-  var arrayVendedoras = [];
-  for (var j=0; j<local.vendedoras.length;j++){
-    var objetoNuevo=
-      { nombre: local.vendedoras[j],
-        ventas:0,
-      }
-    for (var i=0; i<local.ventas.length;i++){
-      if(local.ventas[i].fecha.getMonth()===mes && local.ventas[i].fecha.getFullYear()==anio){
-        if(local.vendedoras[j]===local.ventas[i].nombreVendedora){
-          if (objetoNuevo.nombre === local.ventas[i].nombreVendedora){
-            objetoNuevo.ventas=objetoNuevo.ventas + precioMaquina(local.ventas[i].componentes)
-          }
-        }
-      }
-    }
-    arrayVendedoras.push(objetoNuevo)
-  }
-  console.log(arrayVendedoras)
-  var valorMaximo=0;
-  var nombreVendedora='';
-  for (var k = 0;k<arrayVendedoras.length;k++){
-    if(valorMaximo<arrayVendedoras[k].ventas){
-      valorMaximo=arrayVendedoras[k].ventas
-      nombreVendedora=arrayVendedoras[k].nombre
-    }
-  }
-  return nombreVendedora
-}
-console.log(vendedoraDelMes(1,2019))
 
 // renderPorSucursal(): Muestra una lista del importe total vendido por cada sucursal
 
@@ -432,3 +402,20 @@ console.log( renderPorSucursal() );
 // Ventas por sucursal:
 //   Total de Centro: 4195
 //   Total de Caballito: 1265
+
+// render(): Tiene que mostrar la unión de los dos reportes anteriores, cual fue el producto más vendido y la vendedora que más ingresos generó
+// console.log( render() );
+// Reporte
+// Ventas por mes:
+//   Total de enero 2019: 1250
+//   Total de febrero 2019: 4210
+// Ventas por sucursal:
+//   Total de Centro: 4195
+//   Total de Caballito: 1265
+// Producto estrella: Monitor GPRS 3000
+// Vendedora que más ingresos generó: Grace
+
+function render (){
+  return 'Reporte' + '\n' + renderPorMes() +'\n' + renderPorSucursal() + '\n' + 'Producto estrella: ' + componenteMasVendido() + 'Vendedora que más ingresos generó: ' +'\n'
+}
+console.log (render())
