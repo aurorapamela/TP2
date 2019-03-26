@@ -337,45 +337,25 @@ console.log(sucursalDelMes(1, 2019)); // "Centro"
 // Para tener una mejor muestra de como está resultando el local, queremos desarrollar un reporte que nos muestre las ventas por sucursal y por mes. Para esto, necesitamos crear las siguientes funciones:
 // renderPorMes(): Muestra una lista ordenada del importe total vendido por cada mes/año
 
-function renderPorMes(){
-  var mes=[];
-  var anio=[];
-  var total=[];
-  for (var i=0; i<local.ventas.length;i++){
-    mes.push(local.ventas[i].fecha.getMonth()+1)
-    anio.push(local.ventas[i].fecha.getFullYear())
-    var mesYAnio={
-      elMes: mes[i],
-      elAnio: anio[i],
-      ventas: ventasMes(mes[i], anio[i]),
-    }
-  if(mesYAnio.elMes===mes[i] && mesYAnio.elAnio==anio[i]){
-    if (!mesYAnio.elMes[i]){
-      total.push(mesYAnio)
-    }
-  }
-}
-console.log(total)
-}
-console.log(renderPorMes());
 
-function renderPorMes(){
-  var meses=[];
-  for (var i=0; i<local.ventas.length;i++){
-    meses.push(local.ventas[i].fecha.getMonth()+1)
-  }
-  var anio=[];
-  for (var j=0; j<local.ventas.length;j++){
-    anio.push(local.ventas[j].fecha.getFullYear())
-  }
-  var vendido=[];
-  for (var k=0; k<meses.length;k++){
-    vendido.push(ventasMes(meses[k],anio[k]));
-  }
 
-  return 'Ventas por mes: '+'\n'+'Total de enero 2019:'+vendido[0]+'\n'+'Total de febrero 2019: '+vendido[1]
-}
-console.log(renderPorMes());
+// function renderPorMes(){
+//   var meses=[];
+//   for (var i=0; i<local.ventas.length;i++){
+//     meses.push(local.ventas[i].fecha.getMonth()+1)
+//   }
+//   var anio=[];
+//   for (var j=0; j<local.ventas.length;j++){
+//     anio.push(local.ventas[j].fecha.getFullYear())
+//   }
+//   var vendido=[];
+//   for (var k=0; k<meses.length;k++){
+//     vendido.push(ventasMes(meses[k],anio[k]));
+//   }
+//
+//   return 'Ventas por mes: '+'\n'+'Total de enero 2019:'+vendido[0]+'\n'+'Total de febrero 2019: '+vendido[1]
+// }
+// console.log(renderPorMes());
 
 // Ventas por mes:
 //   Total de enero 2019: 1250
@@ -415,7 +395,35 @@ console.log( renderPorSucursal() );
 // Producto estrella: Monitor GPRS 3000
 // Vendedora que más ingresos generó: Grace
 
-function render (){
-  return 'Reporte' + '\n' + renderPorMes() +'\n' + renderPorSucursal() + '\n' + 'Producto estrella: ' + componenteMasVendido() +'\n' + 'Vendedora que más ingresos generó: ' 
+// function render (){
+//   return 'Reporte' + '\n' + renderPorMes() +'\n' + renderPorSucursal() + '\n' + 'Producto estrella: ' + componenteMasVendido() +'\n' + 'Vendedora que más ingresos generó: '
+// }
+// console.log (render())
+
+function renderPorMes() {
+  var arrayTodo = [];
+
+  for (var i = 0; i < local.ventas.length; i++) {
+    var objetoNuevo = {
+      mes: local.ventas[i].fecha.getMonth() + 1,
+      anio: local.ventas[i].fecha.getFullYear(),
+    }
+    objetoNuevo.vendido = ventasMes(objetoNuevo.mes, objetoNuevo.anio)
+
+    var encontrado = false;
+    for (var j = 0; j < arrayTodo.length; j++) {
+      // aca comparo objetoNuevo con el elemento que estoy iterando de arrayTodo
+      if (objetoNuevo.mes === arrayTodo[j].mes && objetoNuevo.anio === arrayTodo[j].anio) {
+        encontrado = true;
+      }
+    }
+    if (encontrado!=true){
+    arrayTodo.push(objetoNuevo)
+    }
+  }
+  return arrayTodo;
+
+  // return 'Ventas por mes: '+'\n'+'Total de '+ arrayTodo[0].mes + ' ' +arrayTodo[0].anio + ': ' + arrayTodo[0].vendido + '\n'+'Total de ' + arrayTodo[1].mes+ ' ' +arrayTodo[1].anio + ': ' + arrayTodo[1].vendido
+  // return 'Ventas por mes: '+'\n'+'Total de enero 2019:'+arrayTodo[1].vendido+'\n'+'Total de febrero 2019: '+arrayTodo[0].vendido
 }
-console.log (render())
+console.log(renderPorMes());
