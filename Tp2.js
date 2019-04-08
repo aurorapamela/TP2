@@ -1,3 +1,24 @@
+// Pame, te dejo salpicadas a lo largo de tu trabajo mis observaciones al TP. Son detalles, comentarios pequeños y
+// maneras alternativas de hacer algunas funciones por si queres ir explorandolas. 
+// Hiciste un trabajo excelente y aprecio el detalle de ir dejando las distintas versiones de tu codigo, 
+//   para que se vea como fue mejorando. 
+// Un detalle a tener en cuenta por ejemplo si vas a presentar un challenge para una empresa, es siempre
+// borrar los console.log, ya que no quedan bien. Sirven para codear, pero no deben ser parte de un trabajo terminado. 
+// Otro aspecto que te invito a practicar en las proximas semanas es a dejar los espacios necesarios en tu codigo. 
+// Es un detalle, pero ayuda *muchisimo* a la legibilidad de tu texto. 
+// Por ejemplo, en tu funcion vendedoraDelMes, escribis:
+//   for (var k = 0;k<arrayVendedoras.length;k++){
+//     if(valorMaximo<arrayVendedoras[k].ventas){
+      
+//  Te aseguro que se vuelve mucho mas legible al dejar los espacios necesarios, asi:
+//    for (var k = 0; k < arrayVendedoras.length; k++) {
+//     if (valorMaximo < arrayVendedoras[k].ventas) {
+//       (pensa que es el equivalente de leer un texto que no deja espacio despues de las comas o los puntos
+//        "este texto,al no dejar espacios en las comas,es feo de leer"
+// Insisto, ambas cosas son detalles, pero te van a dar ventaja frente a una empresa. 
+// Se cuanto te esforzaste con este trabajo y podes sentirte muy orgullosa de los resultados. 
+// Felicitaciones y segui asi!
+
 // Trabajo Práctico 2 - JS
 // Local de ventas de PCs
 // Una empresa de venta de computadoras está desarrollando un sistema para llevar registro de ventas. Para ello cuenta con la siguiente información:
@@ -158,7 +179,36 @@ function vendedoraDelMes(mes, anio){
     }
   }
   return nombreVendedora
+
 }
+
+
+// Una manera aun mas breve de hacer vendedoraDelMes seria asi:
+
+// function vendedoraDelMes(mes, anio) {
+//   var ventasVendedoras = {};
+
+//   for (var i = 0; i < local.ventas.length; i++) {
+//     if (local.ventas[i].fecha.getMonth() + 1 === mes && local.ventas[i].fecha.getFullYear() === anio) {
+//       var vendedora = local.ventas[i].nombreVendedora;
+//       if (!ventasVendedoras[vendedora]) {
+//         ventasVendedoras[vendedora] = 0;
+//       }
+
+//       ventasVendedoras[vendedora] += precioMaquina( local.ventas[i].componentes );
+//     }
+//   }
+
+//   var max = vendedoras[0];
+
+//   for (var i = 0; i < vendedoras.length; i++) {
+//     if (max && ventasVendedoras[vendedoras[i]] > ventasVendedoras[max]) {
+//       max = vendedoras[i];
+//     }
+//   }
+
+//   return max;
+// }
 console.log(vendedoraDelMes(1,2019))
 
 // ventasMes(mes, anio): Obtener las ventas de un mes.
@@ -190,7 +240,7 @@ function ventasVendedora(nombreVendedora){
     ventasVendedorasTotal.push (precioMaquina(local.ventas[i].componentes))
 }
 }
-  return ventasVendedorasTotal.reduce (function(total,valor){
+  return ventasVendedorasTotal.reduce (function(total,valor){ // buen uso del reduce!
   return total + valor
   })
 }
@@ -209,7 +259,7 @@ function componenteMasVendido(){
   }
   var numeroMayor = Math.max.apply(null, soloNumeros);
   var posicionNumeroMayor = total.indexOf(numeroMayor)
-  return total[posicionNumeroMayor+1]
+  return total[posicionNumeroMayor+1] // muy bien!
 }
 console.log( componenteMasVendido() ); // Monitor GPRS 3000
 
@@ -222,6 +272,13 @@ function huboVentas(mes,anio){
     return false + ' no hubo ventas'
   }
 }
+
+// excelente funcion
+// por si te queres romper la cabeza, te dejo una version super breve:
+// function huboVentas (mes, anio) {
+//   return ventasMes(mes, anio) > 0;
+// }
+
 console.log(huboVentas(3, 2019)); // false
 console.log(huboVentas(1, 2019)); // true
 console.log(huboVentas(2, 2019)); // true
@@ -308,6 +365,10 @@ function ventas(parametro){
   return total + valor
   })
 }
+
+// bien!!
+
+
 console.log(ventas("Centro") ); // 4195
 console.log(ventas("Ada") );
 console.log(ventas("Grace") );
